@@ -53,33 +53,41 @@ class ImageEditor extends JPanel {
      * @param in - the filename of the PPM image
      */
     void readPpmImage(String in) {
-        try {
-            BufferedReader br = new BufferedReader(new FileReader(in));
+        try(BufferedReader br = new BufferedReader(new FileReader(in))){
             String line;
             List<String> tokens = new ArrayList<>();
 
             while ((line = br.readLine()) != null) {
-                line = line.trim();
-                if (line.length() == 0){
+                boolean blank = true;
+                for (int i = 0; i < line.length(); i++) {
+                    char ch = line.charAt(i);
+                    if (ch != ' ' && ch != '\t') {
+                        blank = false;
+                        break;
+                    }
+                }
+                if (blank) {
                     continue;
                 }
-                if (line.startsWith("#")){
-                    continue;    /
+                int pos = 0;
+                while (pos < line.length() && (line.charAt(pos) == ' ' || line.charAt(pos) == '\t')) {
+                    pos++;
+                }
+                if (pos < line.length() && line.charAt(pos) == '#') {
+                    continue;
                 }
 
-                // split tokens
                 String[] parts = line.split("\\s+");
-                for (String p : parts) {
-                    if (p.length() > 0){
-                        tokens.add(p);
+                for (int i = 0; i < parts.length; i++) {
+                    if (parts[i].length() > 0) {
+                        tokens.add(parts[i]);
                     }
                 }
             }
-
             int index = 0;
 
-            String magic = tokens.get(index++);
-            if (!magic.equals("P3")) {
+            String format = tokens.get(index++);
+            if (!format.equals("P3")) {
                 throw new IOException("Not a P3 PPM file");
             }
 
@@ -99,7 +107,6 @@ class ImageEditor extends JPanel {
                     img.setRGB(x, y, c.getRGB());
                 }
             }
-
             this.UNDO_STACK.clear();
             this.REDO_STACK.clear();
             this.zoomImageIndex = 0;
@@ -109,6 +116,7 @@ class ImageEditor extends JPanel {
             throw new RuntimeException(e);
         }
     }
+
 
 
     /**
