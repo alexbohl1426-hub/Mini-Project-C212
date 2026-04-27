@@ -49,7 +49,6 @@ class ImageEditor extends JPanel {
 
     /**
      * Open a PPM Image file, read the data into a new BufferedImage, then return the image
-     *
      * @param in - the filename of the PPM image
      */
     void readPpmImage(String in) {
@@ -121,7 +120,6 @@ class ImageEditor extends JPanel {
 
     /**
      * Given a file name, this method opens the file and write out the PPM header data and then the image pixel data
-     *
      * @param out - the filename that we are writing the PPM header and image data
      */
     void writePpmImage(String out) {
@@ -165,6 +163,7 @@ class ImageEditor extends JPanel {
         this.revalidate();
         this.repaint();
         this.zoomImageIndex++;
+
     }
 
     /**

@@ -6,17 +6,17 @@ class ToolsMenu extends JMenu {
         super("Tools");
         // Create the menu items and disable them.
         JMenuItem zeroRed = new ZeroRedMenuItem(mainPanel);
-        zeroRed.setEnabled(false);
+        zeroRed.setEnabled(true);
         JMenuItem grayscale = new GrayscaleMenuItem(mainPanel);
-        grayscale.setEnabled(false);
+        grayscale.setEnabled(true);
         JMenuItem invert = new InvertMenuItem(mainPanel);
-        invert.setEnabled(false);
+        invert.setEnabled(true);
         JMenuItem mirror = new MirrorMenuItem(mainPanel);
-        mirror.setEnabled(false);
+        mirror.setEnabled(true);
         JMenuItem repeat = new RepeatMenuItem(mainPanel);
-        repeat.setEnabled(false);
+        repeat.setEnabled(true);
         JMenuItem rotate = new RotateMenuItem(mainPanel);
-        rotate.setEnabled(false);
+        rotate.setEnabled(true);
 
         // Add the menu items to the menu.
         this.add(zeroRed);

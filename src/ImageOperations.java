@@ -4,8 +4,7 @@ import java.awt.image.BufferedImage;
 class ImageOperations {
 
     /**
-     * Method removes any red to a image by setting the red to 0 for every pixel in the image
-     *
+     * Method removes any red to an image by setting the red to 0 for every pixel in the image
      * @param img - the image that we are removing the red in the image
      * @return an image with zero red for every pixel of the image
      */
@@ -73,9 +72,9 @@ class ImageOperations {
         for(int i = 0; i < img.getHeight(); i++){
             for(int j = 0; j < img.getWidth(); j++){
                 if (dir == MirrorMenuItem.MirrorDirection.VERTICAL) {
-                    newImg.setRGB(img.getWidth() - 1 - j, i, img.getRGB(i,j));
+                    newImg.setRGB(img.getWidth() - 1 - j, i, img.getRGB(j,i));
                 } else {
-                    newImg.setRGB(j, img.getWidth() - 1 - i, img.getRGB(i,j));
+                    newImg.setRGB(j, img.getHeight() - 1 - i, img.getRGB(j,i));
                 }
             }
         }
@@ -122,7 +121,7 @@ class ImageOperations {
            for(int i = 0; i < n; i++){
                for(int j = 0; j < img.getHeight(); j++){
                    for(int k = 0; k < img.getWidth(); k++){
-                       newImg.setRGB(i + k * img.getWidth(), j, img.getRGB(k,j));
+                       newImg.setRGB(k + i * img.getWidth(), j, img.getRGB(k,j));
                    }
                }
            }
@@ -131,7 +130,7 @@ class ImageOperations {
             for(int i = 0; i < n; i++){
                 for(int j = 0; j < img.getHeight(); j++){
                     for(int k = 0; k < img.getWidth(); k++){
-                        newImg.setRGB( k, i+j * img.getHeight(), img.getRGB(k,j));
+                        newImg.setRGB( k, j + i * img.getHeight(), img.getRGB(k,j));
                     }
                 }
             }
