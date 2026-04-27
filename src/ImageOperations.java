@@ -13,9 +13,9 @@ class ImageOperations {
         BufferedImage newImg = new BufferedImage(img.getWidth(), img.getHeight(), BufferedImage.TYPE_INT_RGB);
         for(int i = 0; i < img.getHeight(); i++){
             for(int j = 0; j < img.getWidth(); j++){
-                Color readColor = new Color(img.getRGB(i,j));
+                Color readColor = new Color(img.getRGB(j,i));
                 Color newColor = new Color(0, readColor.getGreen(), readColor.getBlue());
-                newImg.setRGB(i,j,newColor.getRGB());
+                newImg.setRGB(j,i,newColor.getRGB());
             }
         }
         return newImg;
@@ -32,10 +32,10 @@ class ImageOperations {
         BufferedImage newImg = new BufferedImage(img.getWidth(), img.getHeight(), BufferedImage.TYPE_INT_RGB);
         for(int i = 0; i < img.getHeight(); i++){
             for(int j = 0; j < img.getWidth(); j++){
-                Color readColor = new Color(img.getRGB(i,j));
+                Color readColor = new Color(img.getRGB(j,i));
                 int grey = (readColor.getRed() + readColor.getGreen() + readColor.getBlue()) / 3;
                 Color newColor = new Color(grey, grey, grey);
-                newImg.setRGB(i,j, newColor.getRGB());
+                newImg.setRGB(j,i, newColor.getRGB());
             }
         }
         return newImg;
@@ -51,9 +51,9 @@ class ImageOperations {
         BufferedImage newImg = new BufferedImage(img.getWidth(), img.getHeight(), BufferedImage.TYPE_INT_RGB);
         for(int i = 0; i < img.getHeight(); i++){
             for(int j = 0; j < img.getWidth(); j++){
-                Color readColor = new Color(img.getRGB(i, j));
+                Color readColor = new Color(img.getRGB(j, i));
                 Color newColor = new Color(255-readColor.getRed(), 255- readColor.getGreen(), 255 - readColor.getBlue());
-                newImg.setRGB(i,j, newColor.getRGB());
+                newImg.setRGB(j,i, newColor.getRGB());
             }
         }
         return newImg;
