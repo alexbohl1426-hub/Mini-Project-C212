@@ -104,9 +104,9 @@ class ImageOperations {
         for(int i = 0; i < img.getHeight(); i++){
             for(int j = 0; j < img.getWidth(); j++){
                 if (dir == RotateMenuItem.RotateDirection.CLOCKWISE) {
-                    newImg.setRGB(i, (img.getWidth() - 1) - j, img.getRGB(j,i));
-                } else {
                     newImg.setRGB((img.getHeight() - 1) - i, j, img.getRGB(j,i));
+                } else {
+                    newImg.setRGB(i, (img.getWidth() - 1) - j, img.getRGB(j,i));
                 }
             }
         }
