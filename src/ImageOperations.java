@@ -72,9 +72,17 @@ class ImageOperations {
         for(int i = 0; i < img.getHeight(); i++){
             for(int j = 0; j < img.getWidth(); j++){
                 if (dir == MirrorMenuItem.MirrorDirection.VERTICAL) {
-                    newImg.setRGB(img.getWidth() - 1 - j, i, img.getRGB(j,i));
+                    if (j < img.getWidth() / 2) {
+                        newImg.setRGB(j, i, img.getRGB(j, i));
+                    } else {
+                        newImg.setRGB(j, i, img.getRGB(img.getWidth() - 1 - j, i));
+                    }
                 } else {
-                    newImg.setRGB(j, img.getHeight() - 1 - i, img.getRGB(j,i));
+                    if (i < img.getHeight() / 2) {
+                        newImg.setRGB(j, i, img.getRGB(j, i));
+                    } else {
+                        newImg.setRGB(j, i, img.getRGB(j, img.getHeight() - 1 - i));
+                    }
                 }
             }
         }
